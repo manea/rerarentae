@@ -1,0 +1,14 @@
+[Unit]
+Description=ReraRentAE UAE Rental Cap, Notice SLA & Eviction Readiness (Decree 43/2013 & Law 33/2008) Studio
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/rerarentae
+EnvironmentFile=/etc/rerarentae/.env
+ExecStart=/usr/bin/node --no-warnings /opt/rerarentae/server/index.mjs
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

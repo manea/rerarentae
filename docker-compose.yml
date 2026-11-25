@@ -1,0 +1,20 @@
+services:
+  rerarentae:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rerarentae
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4239:4239"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4239
+      RERARENTAE_DATA_DIR: /app/data
+      BASE_PATH: ${BASE_PATH:-}
+    volumes:
+      - rerarentae_data:/app/data
+
+volumes:
+  rerarentae_data:
